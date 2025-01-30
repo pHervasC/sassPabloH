@@ -2,19 +2,21 @@
 @use 'sass:math';
 
 .row {
-  --gutter-x: 8px;
-  --gutter-y: 8px;
-  display: flex;
-  // Hack para el espaciado vertical
-  & + .row {
-    margin-top: var(--gutter-y);
+    display: flex;
+    flex-wrap: wrap;
+    margin-inline: calc(var(--gutter-x, 0px) / -2);
+    margin-block: calc(var(--gutter-y, 0px) / -2);
+  
+    & + .row {
+      margin-top: var(--gutter-y, 0px);
+    }
   }
-}
-
-.col {
-  flex: 1 0 0%;
-  padding-inline: calc(var(--gutter-x) / 2);
-}
+  
+  .col {
+    padding-inline: calc(var(--gutter-x, 0px) / 2);
+    padding-block: calc(var(--gutter-y, 0px) / 2);
+  }
+  
 .col-auto {
   flex: 0 0 auto;
   width: auto;

@@ -1,6 +1,6 @@
 @use 'sass:map';
 @use 'sass:math';
-@use 'variables' as vars;
+@use '../base/variables' as vars;
 
 // Definir tamaños de fuente
 $font-sizes: (
