@@ -1,10 +1,6 @@
 @use 'sass:map';
-@use 'sass:math';
-@use '../base/variables' as vars;
 
-
-$grid-columns: 12;
-
+// Breakpoints del diseño
 $breakpoints: (
   sm: 576px,
   md: 768px,
@@ -12,12 +8,26 @@ $breakpoints: (
   xl: 1200px
 );
 
+// Tamaños de gutter
+$gutters: (
+  0: 0px,
+  1: 8px,
+  2: 16px,
+  3: 32px,
+  4: 64px,
+  5: 128px
+);
+
+// Generar clases .gx-{breakpoint}-{number} y .gy-{breakpoint}-{number}
 @each $breakpoint, $min-width in $breakpoints {
-  @for $i from 1 through $grid-columns {
-    @media (min-width: $min-width) {
-      .col-#{$breakpoint}-#{$i} {
-        flex: 0 0 math.div(100%, $grid-columns) * $i;
-        max-width: math.div(100%, $grid-columns) * $i;
+  @media (min-width: $min-width) {
+    @each $key, $value in $gutters {
+      .gx-#{$breakpoint}-#{$key} {
+        --gutter-x: #{$value};
+      }
+
+      .gy-#{$breakpoint}-#{$key} {
+        --gutter-y: #{$value};
       }
     }
   }
