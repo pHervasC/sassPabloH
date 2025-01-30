@@ -1,0 +1,31 @@
+@use 'sass:map';
+@use 'sass:math';
+@use 'variables' as vars;
+
+// Definir tamaños de fuente
+$font-sizes: (
+  1: 0.875rem,
+  2: 1rem,
+  3: 1.25rem,
+  4: 1.5rem,
+  5: 2rem
+);
+
+// Definir breakpoints
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+// Generar clases responsivas
+@each $breakpoint, $min-width in $breakpoints {
+  @each $index, $size in $font-sizes {
+    @media (min-width: $min-width) {
+      .fs-#{$breakpoint}-#{$index} {
+        font-size: $size;
+      }
+    }
+  }
+}

@@ -5,6 +5,9 @@
 @use 'base/colors';
 @use 'layout/containers';
 @use 'layout/grid';
+@use 'base/typography_extra';
+
+
 
     .debug-border {
         margin-block: 10px;
