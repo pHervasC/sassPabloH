@@ -1,0 +1,24 @@
+@use 'sass:map';
+@use 'sass:math';
+@use '../base/variables' as vars;
+
+
+$grid-columns: 12;
+
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+@each $breakpoint, $min-width in $breakpoints {
+  @for $i from 1 through $grid-columns {
+    @media (min-width: $min-width) {
+      .col-#{$breakpoint}-#{$i} {
+        flex: 0 0 math.div(100%, $grid-columns) * $i;
+        max-width: math.div(100%, $grid-columns) * $i;
+      }
+    }
+  }
+}
